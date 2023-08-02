@@ -1,0 +1,82 @@
+﻿@page "/CustomSolutions"
+@using System.Globalization
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<SfResources> Localizer
+
+@*https://chat.openai.com/share/be6f0132-ec2d-4ec2-8227-ea6206622a4b*@
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="display-4">@Localizer["CustomSolutionsPage"]</h1>
+        </div>
+    </div>
+
+    <!-- First Section -->
+    <div class="row mt-4">
+        <div class="col-lg-8">
+            <div class="content-box h-100">
+                <h2>@Localizer["CustomSolutionsPage1"]</h2>
+                <p class="text-justify">@Localizer["CustomSolutionsPage2"]</p>
+                <p class="text-justify">@Localizer["CustomSolutionsPage3"]</p>
+                <p class="text-justify">@Localizer["CustomSolutionsPage4"]</p>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="img-box">
+                <img class="img-fluid" src="images/custom solutions.png" alt="Image describing custom solutions" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Second Section -->
+    <div class="row mt-4 align-items-center flex-column-reverse flex-lg-row">
+        <div class="col-lg-4">
+            <img class="img-fluid" src="images/software_development_process.png" alt="Image depicting the software development process" />
+        </div>
+        <div class="col-lg-8">
+            <h2>@Localizer["CustomSolutionsPage5"]</h2>
+            <p>@Localizer["CustomSolutionsPage6"]</p>
+            <p>@Localizer["CustomSolutionsPage7"]</p>
+            <p>@Localizer["CustomSolutionsPage8"]</p>
+        </div>
+    </div>
+
+    <div class="row mt-4 text-center">
+        <div class="col-lg-8 mx-auto">
+            <h2>@Localizer["CustomSolutionsPage9"]</h2>
+            <p>@Localizer["CustomSolutionsPage10"]</p>
+        </div>
+    </div>
+
+    <!-- The following section can have images/logos representing your skills. -->
+    <div class="row mt-4 justify-content-center">
+        <div class="col-lg-4 col-md-6 text-center mb-4">
+            <img class="img-fluid" src="images/cloud_computing.jpg" alt="Image representing cloud computing" />
+        </div>
+        <div class="col-lg-4 col-md-6 text-center mb-4">
+            <img class="img-fluid" src="images/programming_languages.png" alt="Image representing programming languages" />
+        </div>
+        <div class="col-lg-4 col-md-6 text-center mb-4">
+            <img class="img-fluid" src="images/Artificial-Intelligence-Technology.jpg" alt="Image representing AI technologies" />
+        </div>
+    </div>
+</div>
+
+
+@code {
+    
+}
+<style>
+    .h-646 {
+        max-height: 646px;
+    }
+
+    .img-container {
+        margin-top: -75px; /* Adjust this value as needed */
+    }
+
+    .custom-row {
+        align-items: flex-start;
+    }
+
+</style>

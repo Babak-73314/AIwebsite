@@ -1,0 +1,66 @@
+﻿@page "/ChatBot"
+@inject ChatService ChatService
+@using AIwebsite.Services;
+@using Azure.AI.OpenAI
+@using Azure
+
+<h3>Chat</h3>
+
+@if (_chatMessages == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div>
+        <input @bind="_userInput" placeholder="Type your message here..." />
+        <button @onclick="SendMessage">Send</button>
+    </div>
+
+    <div>
+        @foreach (var message in _chatMessages)
+        {
+            <p>@message.Role: @message.Content</p>
+        }
+    </div>
+    }
+}
+
+@code {
+    private string _userInput;
+    private List<ChatMessage> _chatMessages;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _chatMessages = new List<ChatMessage>
+        {
+            new ChatMessage(ChatRole.System, @"You are an AI developed by OpenAI. You provide useful and accurate information in a friendly manner.")
+        };
+
+        await base.OnInitializedAsync();
+    }
+
+    private async Task SendMessage()
+    {
+        if (!string.IsNullOrWhiteSpace(_userInput))
+        {
+            var userMessage = new ChatMessage(ChatRole.User, _userInput);
+            _chatMessages.Add(userMessage);
+
+            var aiResponse = await ChatService.GetChatCompletionsAsync(userMessage);
+
+            // Adjusting this line to account for the actual response structure.
+            var aiMessage = new ChatMessage(ChatRole.Assistant, aiResponse.Choices.FirstOrDefault()?.Message.Content);
+
+            if (aiMessage != null)
+            {
+                _chatMessages.Add(aiMessage);
+            }
+
+            _userInput = string.Empty;
+
+            StateHasChanged();
+        }
+    }
+
+}
